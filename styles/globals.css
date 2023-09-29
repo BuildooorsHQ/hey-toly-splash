@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(0, 0, 0); /* Set background color to black */
+}
+
+/* Or, if you prefer to create a specific class for the main tag */
+.main-background {
+  background: rgb(0, 0, 0); /* Set background color to black */
+}
+
+.video-container {
+  position: relative;
+  display: flex;
+  align-items: center; /* Vertically center children */
+  justify-content: center; /* Horizontally center children */
+  height: 100vh;
+}
+
+.play-icon-container {
+  z-index: 1; /* Ensure the play icon appears above the video */
+}
