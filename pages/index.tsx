@@ -1,6 +1,5 @@
 /* Hey Toly website landing page > ./pages/index.tsx */
 import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -36,16 +35,15 @@ export default function Home() {
   return (
     <main className="flex flex-row items-center justify-between min-h-screen p-8 text-white main-background">
 
-      {/* Left Side Content */}
-      <div className="flex flex-col items-center justify-center w-1/2">
-        {/* Logo and App Name */}
-        <div className="mb-8">
-          <Image src="/app-logo.png" alt="App Logo" width={100} height={100} />
-          <h1 className="mt-4 text-3xl font-bold">AppName</h1>
+      {/* Left Side - Content */}
+      <div className="flex flex-col items-center justify-center w-1/2 py-8">
+        {/* App Name */}
+        <div className="mb-4"> {/* Adjusted margin */}
+          <h1 className="mt-4 font-bold gradient-text">Hey Toly</h1>
         </div>
 
-        {/* App Tagline or Description */}
-        <p className="mb-8 text-center text-xl">Discover amazing features and have a seamless experience with our app!</p>
+        {/* Tagline */}
+        <p className="mb-8 text-center text-xl">Discover Solana with your very own Toly!</p>
 
         {/* Download Button */}
         <a href="#download" className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full">Download Now</a>
@@ -61,7 +59,7 @@ export default function Home() {
         </div>
         {!isPlaying && (
           <div className="play-icon-container absolute top-0 left-0 w-full h-full flex items-center justify-center">
-            <span className="text-9xl">▶️</span> {/* Unicode Character for Play Icon */}
+            <span className="text-9xl">▶️</span>
           </div>
         )}
       </div>

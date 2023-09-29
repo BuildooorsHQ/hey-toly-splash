@@ -4,22 +4,31 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(0, 0, 0); /* Set background color to black */
+  background: rgb(0, 0, 0);
 }
 
-/* Or, if you prefer to create a specific class for the main tag */
 .main-background {
-  background: rgb(0, 0, 0); /* Set background color to black */
+  background: rgb(0, 0, 0);
 }
 
 .video-container {
   position: relative;
   display: flex;
-  align-items: center; /* Vertically center children */
-  justify-content: center; /* Horizontally center children */
+  align-items: center;
+  justify-content: center;
   height: 100vh;
 }
 
 .play-icon-container {
-  z-index: 1; /* Ensure the play icon appears above the video */
+  z-index: 1;
 }
+
+.gradient-text {
+  background: linear-gradient(45deg, #8e44ad,  #34eb8f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+}
+
