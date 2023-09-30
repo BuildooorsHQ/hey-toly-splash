@@ -16,11 +16,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-}
-
-.play-icon-container {
-  z-index: 1;
+  height: 50vh;
 }
 
 .gradient-text {
@@ -30,5 +26,34 @@ body {
   display: inline-block;
   font-family: 'Helvetica Neue', sans-serif;
   font-size: clamp(3rem, 8vw, 7rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
+.text-mobile-title {
+  font-size: clamp(4rem, 8vw, 9rem);
+  max-width: 100%;
+}
+
+.play-icon-container {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .video-container,
+  .play-icon-container {
+    width: 100%;
+    height: auto;
+    max-height: unset;
+  }
+
+  .text-9xl {
+    font-size: 4rem;
+  }
+}
