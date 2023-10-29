@@ -7,13 +7,26 @@ export default function Home() {
   const [email, setEmail] = useState()
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState()
   const [loading, setLoading] = useState(false)
-
+  const [validEmail, setValidEmail] = useState(false)
   const handleChange = (e:any) => {
     setEmail(e.target.value)
+    validateEmail(e.target.value)
   }
 
+const validateEmail = (email:any) =>{
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const test = re.test(String(email).toLowerCase());
+console.log('valid email?', test)
+  setValidEmail(test)
+}
       const handleClick = async ()=>{
+
+      if (email === '' || email === null || email === undefined) { 
+      setError(true)
+      }
+
       setLoading(true)
       try {
       const options = { 
@@ -79,7 +92,9 @@ export default function Home() {
       {loading && <div id="loader"></div>}
       {success && <span>Thank you. You have been registered</span>}
       {error && <span>Sorry there was an error. Please try again.</span>}
-      {!loading && <a href="#waitlist" className="px-8 py-3 bg-white text-green-600 font-semibold rounded-full hover:text-white hover:bg-green-600 m-3" onClick={handleClick}>Join Waitlist</a>}
+      {!loading && !success && 
+      <input type={'button'} className="cursor-pointer px-8 py-3 bg-white text-green-600 font-semibold rounded-full hover:text-white hover:bg-green-600 m-3" 
+      onClick={handleClick} value={'Join Waitlist'} />}
         {/* Download Button
         <a href="#download" className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full">Download Now</a> */}
 
