@@ -4,6 +4,35 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [email, setEmail] = useState()
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const handleChange = (e:any) => {
+    setEmail(e.target.value)
+  }
+
+      const handleClick = async ()=>{
+      setLoading(true)
+      try {
+      const options = { 
+                    method: 'POST', 
+                    headers: { 'Content-type': 'application/json'}, 
+                    body: JSON.stringify({email: email, waitlist_id: 11587}) 
+                    }
+      const response = await fetch('https://api.getwaitlist.com/api/v1/waiter', options)
+      const reply = await response.json()
+      console.log(reply)
+      setSuccess(true)
+      setError(false)
+      } catch (error) {
+      console.log('error', error)
+      setError(true)
+      setSuccess(false)
+      }
+      setLoading(false)
+      }
 
   const toggleVideo = () => {
     if (videoRef.current) {
@@ -45,8 +74,15 @@ export default function Home() {
         {/* Tagline */}
         <p className="mb-8 text-center text-xl">Discover Solana with your very own Toly!</p>
 
-        {/* Download Button */}
-        <a href="#download" className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full">Download Now</a>
+        {/* Waitlist Button */}
+        <input className='px-8 py-3 bg-white text-green-600 rounded-full m-3' placeholder='toly@solana.com' onChange={handleChange}></input>
+      {loading && <div id="loader"></div>}
+      {success && <span>Thank you. You have been registered</span>}
+      {error && <span>Sorry there was an error. Please try again.</span>}
+      {!loading && <a href="#waitlist" className="px-8 py-3 bg-white text-green-600 font-semibold rounded-full hover:text-white hover:bg-green-600 m-3" onClick={handleClick}>Join Waitlist</a>}
+        {/* Download Button
+        <a href="#download" className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full">Download Now</a> */}
+
       </div>
 
       {/* Right Side - Video */}
