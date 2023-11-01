@@ -1,5 +1,5 @@
 /* Hey Toly website landing page > ./pages/index.tsx */
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);

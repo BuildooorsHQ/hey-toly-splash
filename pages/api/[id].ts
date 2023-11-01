@@ -9,5 +9,12 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+
+  const fetcher = async () => {
+    const { id } = req.query
+    const response = await fetch(`https://heytolybe.vercel.app/api/get/${id}`)
+    const data = await response.json()
+    res.status(200).json(data)
+  }
+  fetcher()
 }
