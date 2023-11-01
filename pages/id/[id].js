@@ -1,19 +1,20 @@
 import Link from "next/link"
 import Image from "next/image"
-export async function getServerSideProps() {
+export async function getServerSideProps(req, res) {
 
+  const { id } = req.query
   try {
-    const res = await fetch('https://heytolybe.vercel.app/api/get/3MUXrJV3cmChFSDer')
-    // const res = await fetch('https://heytolybe.vercel.app/api/get/1')
+    // example  3MUXrJV3cmChFSDer
+    const res = await fetch(`https://heytolybe.vercel.app/api/get/${id}`)
     const data = await res.json()
     console.log(data)
-    return { props: { data: data.mints[0] ? data.mints[0] : null, error: null } }
+    return { props: { id, data: data.mints[0] ? data.mints[0] : null, error: null } }
   } catch (error) {
     return { props: { data: null, error } }
   }
 }
 
-export default function Page({ data, error }) {
+export default function Page({ id, data, error }) {
   return (<>
     <div className="center text-center p-5">
       <h1 className="text-green-600 font-bold text-2xl ">Hey Toly</h1>
