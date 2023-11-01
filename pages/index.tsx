@@ -1,5 +1,8 @@
 /* Hey Toly website landing page > ./pages/index.tsx */
 import { useEffect, useRef, useState } from 'react';
+import apple from '../public/app-store.svg'
+import android from '../public/google-play-badge.webp'
+import Image from 'next/image';
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -14,6 +17,19 @@ export default function Home() {
     setEmail(e.target.value)
     validateEmail(e.target.value)
   }
+
+const handleApple = () => {
+window.alert('Coming Soon!')
+}
+
+const handleAndroid = () => {
+  const link = document.createElement('a');
+  link.href = '/android.apk';  // Replace with your APK file URL
+  link.download = 'android.apk';  // Optionally name the file
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 const validateEmail = (email:any) =>{
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -100,6 +116,10 @@ console.log('valid email?', test)
         <a href="#download" className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full">Download Now</a> */}
 
       </div>
+    {/* Apple Button */}
+    <Image className='cursor-pointer' onClick={handleApple} src={apple} alt={"Download from the Apple Store"} width={'200'} height={'200'}/>
+    {/* Android Button */}
+    <Image className='cursor-pointer' onClick={handleAndroid} src={android} alt={"Download from the Apple Store"} width={'200'} height={'200'}/>
 
       {/* Right Side - Video */}
       <div className="video-container w-full md:w-3/5 p-4 md:p-8 relative cursor-pointer" onClick={toggleVideo}>
