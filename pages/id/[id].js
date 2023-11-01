@@ -1,5 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
+import Meta from '../../components/Meta';
+
 export async function getServerSideProps(req, res) {
 
   const { id } = req.query
@@ -15,12 +17,21 @@ export async function getServerSideProps(req, res) {
 }
 
 export default function Page({ id, data, error }) {
+  const slogan = 'Discover Solana with your very own Toly'
+
   return (<>
+    <Meta
+      title={`Hey Toly, ${data?.question}?`}
+      description={`${slogan} - ${data?.answer}`}
+      image={`https://${data?.imageId}.ipfs.nftstorage.link`}
+      url={`https://heytoly.com/id/${data?.imageId}`}
+    />
     <div className="center text-center p-5">
       <h1 className="text-green-600 font-bold text-2xl ">Hey Toly</h1>
       <h2 className="text-white italic">Discover Solana with your very own Toly!</h2>
       {data?.imageId && <div className="flex items-center justify-center">
-        <Image alt="HeyToly POAT" width="600" height="600" src={`https://${data.imageId}.ipfs.nftstorage.link/`} />
+        <img alt="HeyToly POAT" width="600" height="600" src={`https://${data.imageId}.ipfs.nftstorage.link/`} />
+        {/* <Image alt="HeyToly POAT" width="600" height="600" src={`https://${data.imageId}.ipfs.nftstorage.link/`} /> */}
         {/* <Image alt="HeyToly POAT" width="600" height="600" src={`https://bafybeicakrgpr4vmywrti4hlgsh4nmez6yptqo4okec4md43zxsr5krl5q.ipfs.nftstorage.link/`} /> */}
       </div>}
       {error && <div className="text-red-800">{error}</div>}
@@ -38,9 +49,9 @@ export default function Page({ id, data, error }) {
       {data?.hash && <a href={`https://tiplink.io/i${data.hash}`} target="_blank" className="text-white bg-purple-600 pl-10 pr-10 p-2 cursor-pointer " type="button">CLAIM</a>}
       <p className="text-red-600">Please make sure you CLAIM to your wallet before sharing.</p>
       <footer className="text-white text-xs">Copyright 2023 |
-        <Link href="www.buildooors.com" target="_blank" className="hover:text-green" > buildooors.com</Link>
+        <Link href="https://buildooors.com" target="_blank" className="hover:text-green" > buildooors.com</Link>
       </footer>
-    </div>
+    </div >
   </>
   )
 }

@@ -40,6 +40,7 @@ console.log('valid email?', test)
       setSuccess(true)
       setError(false)
       } catch (error) {
+
       console.log('error', error)
       setError(true)
       setSuccess(false)
