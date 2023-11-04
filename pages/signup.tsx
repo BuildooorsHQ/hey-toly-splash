@@ -19,6 +19,7 @@ export default function Home() {
       currency: 'usd',
       destination: '6SSsGj8F15BpNiBftHK8bLgx4NeZ9aymiPyuF69UFyXf',
       amount: 0.05,
+      webhook: { url: 'https://heytoly.com/signup' }
     });
 
     if (button) {
