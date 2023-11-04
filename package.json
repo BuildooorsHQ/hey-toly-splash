@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@code-wallet/client": "^1.0.3",
+    "@code-wallet/elements": "^1.1.1",
     "@supabase/supabase-js": "^2.38.4",
     "next": "latest",
     "react": "latest",
